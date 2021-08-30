@@ -8,7 +8,7 @@ const {
     deleteUser, //bonus remove user's associated Thoughts when deleted
     addFriend,
     removeFriend
-} = require('../../controllers/User-controller');
+} = require('../../controllers/user-controller');
 
 router
 .route('/api/users')
