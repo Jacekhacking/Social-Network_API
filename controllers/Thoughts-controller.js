@@ -67,14 +67,15 @@ const thoughtsController = {
 
     //create reaction and add to thought
     addReaction({params, body}, res){
+
         Thoughts.findOneAndUpdate(
-            {_id: params.thoughtsId},
-            {$push:{reaction: body } },
+            {_id: params.thoughtId},
+            {$push:{reactions: body } },
             {new: true, runValidators: true}
         )
         .then(dbThoughtsData => {
             if (!dbThoughtsData){
-                res.status(404).json({message: 'you donoe messed up a-a-ron'});
+                res.status(404).json({message: 'you done messed up a-a-ron'});
                 return;
             }
             res.json(dbThoughtsData);
@@ -84,9 +85,10 @@ const thoughtsController = {
 
     //delete thought 
     removeReaction({params}, res) {
+        console.log(params)
         Thoughts.findOneAndUpdate(
-            {_id: params.thoughtsId},
-            {$pull: {reaction: { reactionId: params.thoughtsId} } },
+            {_id: params.thoughtId},
+            {$pull: {reactions: { _id: params.reactionId} } },
             {new: true}
         )
         .then(dbThoughtsData => res.json(dbThoughtsData))

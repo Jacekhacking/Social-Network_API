@@ -22,10 +22,10 @@ router
     .put(updateThoughtById)
     .delete(deleteThoughtById);
 
-// /api/thoughts/thoughtsId/reactions
-router.route('/:thoughtsId/reactions').post(addReaction);
+// /api/thoughts/thoughtId/reactions
+router.route('/:thoughtId/reactions').post(addReaction);
 
-router.route('/api/thoughts/:thoughtId/reactionId').delete(removeReaction);
+router.route('/:thoughtId/:reactionId').delete(removeReaction);
 
 
 module.exports = router;
